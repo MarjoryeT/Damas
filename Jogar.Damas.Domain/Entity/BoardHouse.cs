@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Jogar.Damas.Domain.Exceptions;
 
 namespace Jogar.Damas.Domain.Entity
 {
@@ -19,10 +17,24 @@ namespace Jogar.Damas.Domain.Entity
             Col = col;
         }
 
+        public void SetPanw(Pawn pawn)
+        {
+            if (Available)
+                Pawn = pawn;
+            else
+                throw new BusinessException("O peão não pode ocupar uma casa ja ocupada!!!");
+        }
+
+        public void Clear()
+        {
+            Pawn = null;
+        }
+
+
         public int Row { get; protected set; }
         public int Col { get; protected set; }
         public Pawn Pawn { get; protected set; }
+        public bool Available => Pawn is null;
 
-        
     }
 }
