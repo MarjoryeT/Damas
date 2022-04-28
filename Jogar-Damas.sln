@@ -1,0 +1,45 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32421.90
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-Presentation", "1-Presentation", "{D62C0814-BA42-48D6-BFE0-F1C455134F4F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2-Aplication", "2-Aplication", "{ECA23606-8F40-4517-9095-6F427248ACE3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3-Domain", "3-Domain", "{838ED797-AE25-4F5A-A72B-E5B308A7ECF3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4-Data", "4-Data", "{F095AFA2-F283-4BB4-A402-53176EF340C3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jogar.Damas.Domain", "Jogar.Damas.Domain\Jogar.Damas.Domain.csproj", "{FA51CBB3-4819-4EB5-8E77-AA45CA6B20C0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5-Tests", "5-Tests", "{5F8AFAD0-12A6-4A3E-AC94-FFA764F5571F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jogar.Damas.Test", "Jogar.Damas.Test\Jogar.Damas.Test.csproj", "{8BB14E66-8331-41CE-82E9-F3721E0B6E72}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FA51CBB3-4819-4EB5-8E77-AA45CA6B20C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA51CBB3-4819-4EB5-8E77-AA45CA6B20C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA51CBB3-4819-4EB5-8E77-AA45CA6B20C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA51CBB3-4819-4EB5-8E77-AA45CA6B20C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8BB14E66-8331-41CE-82E9-F3721E0B6E72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BB14E66-8331-41CE-82E9-F3721E0B6E72}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BB14E66-8331-41CE-82E9-F3721E0B6E72}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BB14E66-8331-41CE-82E9-F3721E0B6E72}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FA51CBB3-4819-4EB5-8E77-AA45CA6B20C0} = {838ED797-AE25-4F5A-A72B-E5B308A7ECF3}
+		{8BB14E66-8331-41CE-82E9-F3721E0B6E72} = {5F8AFAD0-12A6-4A3E-AC94-FFA764F5571F}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7331F60F-E3FF-4FF8-9A3A-BCDC52C2455F}
+	EndGlobalSection
+EndGlobal
