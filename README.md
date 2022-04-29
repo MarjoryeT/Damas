@@ -1,3 +1,3 @@
 # Damas
-Criação de um jogo de Damas
-Em fase inicial de desenvolvimento
+Criação de um jogo de Damas.
+Em fase inicial de desenvolvimento.
