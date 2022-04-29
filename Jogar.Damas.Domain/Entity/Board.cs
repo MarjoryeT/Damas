@@ -32,7 +32,7 @@ namespace Jogar.Damas.Domain.Entity
                         {
                             Pawn pawn = new Pawn(Enums.CheckerCollor.BLACK, r, c);
 
-                            Houses.Add(new BoardHouse(r, c));
+                            Houses.Add(new BoardHouse(r, c, pawn));
                             Pawns.Add(pawn);
                         }
                         else
@@ -48,9 +48,9 @@ namespace Jogar.Damas.Domain.Entity
         public void Move(Pawn pawn, int row, int col)
         {
             BoardHouse actualHouse = GetHouse(pawn);
-            BoardHouse newHouse = Houses.FirstOrDefault(x => x.Pawn.Row == row && x.Pawn.Col == col);    
+            BoardHouse newHouse = Houses.FirstOrDefault(x => x.Pawn.Row == row && x.Pawn.Col == col);
             actualHouse.Clear();
-            newHouse.SetPanw(pawn); 
+            newHouse.SetPanw(pawn);
         }
 
         public List<BoardHouse> GetAvailableHouses(Pawn pawn)
@@ -86,6 +86,11 @@ namespace Jogar.Damas.Domain.Entity
         private BoardHouse GetHouse(Pawn pawn)
         {
             return Houses.FirstOrDefault(house => house.Pawn == pawn);
+        }
+
+        public BoardHouse GetHouse(int row, int col)
+        {
+            return Houses.FirstOrDefault(house => house.Row == row && house.Col == col);
         }
 
         private bool IsPair(int value)

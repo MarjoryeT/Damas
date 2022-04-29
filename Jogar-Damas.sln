@@ -19,6 +19,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jogar.Damas.Test", "Jogar.D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jogar.Damas.Data", "Jogar.Damas.Data\Jogar.Damas.Data.csproj", "{29D94193-47A0-48CF-9160-20A910D97F22}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jogas.Damas.Blazor", "Jogas.Damas.Blazor\Jogas.Damas.Blazor.csproj", "{C62F75A8-0DB0-46F9-AA94-CA6746B18B91}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,10 @@ Global
 		{29D94193-47A0-48CF-9160-20A910D97F22}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{29D94193-47A0-48CF-9160-20A910D97F22}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{29D94193-47A0-48CF-9160-20A910D97F22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C62F75A8-0DB0-46F9-AA94-CA6746B18B91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C62F75A8-0DB0-46F9-AA94-CA6746B18B91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C62F75A8-0DB0-46F9-AA94-CA6746B18B91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C62F75A8-0DB0-46F9-AA94-CA6746B18B91}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -45,6 +51,7 @@ Global
 		{FA51CBB3-4819-4EB5-8E77-AA45CA6B20C0} = {838ED797-AE25-4F5A-A72B-E5B308A7ECF3}
 		{8BB14E66-8331-41CE-82E9-F3721E0B6E72} = {5F8AFAD0-12A6-4A3E-AC94-FFA764F5571F}
 		{29D94193-47A0-48CF-9160-20A910D97F22} = {F095AFA2-F283-4BB4-A402-53176EF340C3}
+		{C62F75A8-0DB0-46F9-AA94-CA6746B18B91} = {D62C0814-BA42-48D6-BFE0-F1C455134F4F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7331F60F-E3FF-4FF8-9A3A-BCDC52C2455F}

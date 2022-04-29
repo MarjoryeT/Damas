@@ -15,9 +15,9 @@ namespace Jogar.Damas.Domain.Entity
         public Board Board { get; protected set; }
        
         public virtual IList<CheckersMoves> Moves { get; protected set; }
-        public void NewMatch()
+        public void NewMatch(int row, int col)
         {
-            
+            Board = new Board(8, 8);
         }
     }
 }

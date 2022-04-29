@@ -1,0 +1,58 @@
+﻿@page "/play"
+@using Jogar.Damas.Domain.Entity;
+
+<button @onclick="NewGame">Novo Jogo</button>
+
+<div id="containerFull">
+
+    @for (int r = row; r >= 1; r--)
+    {
+        <div class="row line-@(IsPair(r) ? 1 : 2)">
+            @for (int c = 1; c <= col; c++)
+            {
+                @if (IsPair(r) == IsPair(c))
+                {
+                    BoardHouse house = game.Board.GetHouse(r, c);
+                    <div style="background-image:url('/img/black-house.jpg')">
+                        @if (!house.Available)
+                        {
+                            @if (house.Pawn.CheckerCollor == Jogar.Damas.Domain.Enums.CheckerCollor.BLACK)
+                            {
+                                <img src="/img/checker-white.png" class="pawn">
+                            }
+                            else
+                            {
+                                <img src="/img/checker-black.png" class="pawn">
+                            }
+                        }
+                    </div>
+
+                }
+                else
+                {
+                    <div style="background-image:url('/img/white-house.jpg')"></div>
+                }
+            }
+        </div>
+    }
+</div>
+
+
+@code {
+    CheckersGame game = new CheckersGame();
+    public int row = 0, col = 0;
+
+    private void NewGame()
+    {
+        row = 8;
+        col = 8;
+
+        game.NewMatch(row, col);
+    }
+
+    private bool IsPair(int value)
+    {
+        return value % 2 == 0;
+    }
+
+}
