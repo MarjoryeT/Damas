@@ -2,4 +2,4 @@
 using System.Linq;
 
 Board board = new Board(8, 8);
-board.GetAvailableHouses(board.Pawns.FirstOrDefault(p=> p.Row == 3));
+board.SelectPanw(board.Pawns.FirstOrDefault(p=> p.Row == 3));

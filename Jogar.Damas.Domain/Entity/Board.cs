@@ -8,6 +8,7 @@ namespace Jogar.Damas.Domain.Entity
         public List<BoardHouse> Houses { get; protected set; }
         public List<Pawn> Pawns { get; protected set; }
 
+        public Pawn SelectedPanw { get; protected set; }
 
         public Board(int row, int col)
         {
@@ -47,29 +48,32 @@ namespace Jogar.Damas.Domain.Entity
 
         }
 
-        public void Move(Pawn pawn, int row, int col)
+        public void Move(BoardHouse newHouse)
         {
-            BoardHouse actualHouse = GetHouse(pawn);
-            BoardHouse newHouse = Houses.FirstOrDefault(x => x.Pawn.Row == row && x.Pawn.Col == col);
-            actualHouse.Clear();
-            newHouse.SetPanw(pawn);
+            if (newHouse.Available)
+            {
+                BoardHouse actualHouse = GetHouse(SelectedPanw);
+                actualHouse.Clear();
+                newHouse.SetPanw(SelectedPanw);
+                UnavailableHouses();
+            }
         }
 
-        public List<BoardHouse> GetAvailableHouses(Pawn pawn)
+        public void SelectPanw(Pawn pawn)
         {
             var adjacentHouses = GetAdjacentHouses(pawn);
 
-            var adversaryHouses = adjacentHouses.Where(h => h.Pawn?.CheckerCollor != pawn.CheckerCollor);
+            var adversaryHouses = adjacentHouses.Where(h => h.Pawn?.CheckerCollor != pawn.CheckerCollor && !h.Empty).ToList();
 
             var houses = adjacentHouses.Where(h => h.Empty).ToList();
 
-            houses.AddRange(GetAdjacentAdversaryHouses(houses, pawn));
+            houses.AddRange(GetAdjacentAdversaryHouses(adversaryHouses, pawn));
 
             UnavailableHouses();
 
             houses.ForEach(h => h.MakeAvailable(true));
 
-            return houses;
+            SelectedPanw = pawn;
         }
 
         public void UnavailableHouses()
