@@ -73,7 +73,6 @@ a, .btn-link {
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
-    -o-box-sizing: border-box;
 }
 
 #containerFull {
@@ -99,8 +98,6 @@ a, .btn-link {
         float: left;
         width: 70px;
         height: 70px;
-        border-left: 1.5px solid #000;
-        border-bottom: 1.5px solid #000;
         text-align: center;
     }
 
@@ -129,4 +126,5 @@ a, .btn-link {
     left: -9px;
     position: relative;
     top: -3px;
+    cursor: pointer;
 }

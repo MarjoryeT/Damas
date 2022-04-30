@@ -19,7 +19,7 @@ namespace Jogar.Damas.Domain.Entity
 
         public void SetPanw(Pawn pawn)
         {
-            if (Available)
+            if (Empty)
                 Pawn = pawn;
             else
                 throw new BusinessException("O peão não pode ocupar uma casa ja ocupada!!!");
@@ -34,7 +34,14 @@ namespace Jogar.Damas.Domain.Entity
         public int Row { get; protected set; }
         public int Col { get; protected set; }
         public Pawn Pawn { get; protected set; }
-        public bool Available => Pawn is null;
+        public bool Empty => Pawn is null;
+
+        public bool Available { get; protected set; }
+
+        public void MakeAvailable(bool available)
+        {
+            Available = available;
+        }
 
     }
 }

@@ -1,7 +1,7 @@
 ﻿@page "/play"
 @using Jogar.Damas.Domain.Entity;
 
-<button @onclick="NewGame">Novo Jogo</button>
+<button class="btn btn-info" @onclick="NewGame">Novo Jogo</button>
 
 <div id="containerFull">
 
@@ -13,12 +13,12 @@
                 @if (IsPair(r) == IsPair(c))
                 {
                     BoardHouse house = game.Board.GetHouse(r, c);
-                    <div style="background-image:url('/img/black-house.jpg')">
-                        @if (!house.Available)
+                    <div style="background-image:url('/img/black-house.jpg');@(house.Available? "opacity: 65%" : "")">
+                        @if (!house.Empty)
                         {
                             @if (house.Pawn.CheckerCollor == Jogar.Damas.Domain.Enums.CheckerCollor.BLACK)
                             {
-                                <img src="/img/checker-white.png" class="pawn">
+                                <img @onclick="()=> SelectPawn(house)" src="/img/checker-white.png" class="pawn">
                             }
                             else
                             {
@@ -55,4 +55,8 @@
         return value % 2 == 0;
     }
 
+    private void SelectPawn(BoardHouse house)
+    {
+        game.Board.GetAvailableHouses(house.Pawn);
+    }
 }

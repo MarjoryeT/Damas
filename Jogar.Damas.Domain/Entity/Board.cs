@@ -7,6 +7,8 @@ namespace Jogar.Damas.Domain.Entity
     {
         public List<BoardHouse> Houses { get; protected set; }
         public List<Pawn> Pawns { get; protected set; }
+
+
         public Board(int row, int col)
         {
             Houses = new List<BoardHouse>();
@@ -59,11 +61,20 @@ namespace Jogar.Damas.Domain.Entity
 
             var adversaryHouses = adjacentHouses.Where(h => h.Pawn?.CheckerCollor != pawn.CheckerCollor);
 
-            var houses = adjacentHouses.Where(h => h.Available).ToList();
+            var houses = adjacentHouses.Where(h => h.Empty).ToList();
 
             houses.AddRange(GetAdjacentAdversaryHouses(houses, pawn));
 
+            UnavailableHouses();
+
+            houses.ForEach(h => h.MakeAvailable(true));
+
             return houses;
+        }
+
+        public void UnavailableHouses()
+        {
+            Houses.ForEach(h => h.MakeAvailable(false));
         }
 
         private List<BoardHouse> GetAdjacentHouses(Pawn pawn)
