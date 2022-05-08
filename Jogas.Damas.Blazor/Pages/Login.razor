@@ -1,0 +1,39 @@
+﻿@page "/login"
+@using Jogar.Damas.Application.Users.Commands
+@inject LoginCommand loginCommand;
+
+<PageTitle>Login</PageTitle>
+<div class="main-register">
+
+    <div id="main-container">
+        <h1>Login</h1>
+        <form id="register-form">
+            <div class="full-box">
+                <label for="email">E-mail</label>
+                <input @bind-value="loginCommand.Email" class="form-control" type="email" name="email" id="email" placeholder="Digite seu e-mail">
+            </div>
+            <div class="full-box">
+                <label for="password">Senha</label>
+                <input @bind-value="loginCommand.Password" class="form-control" type="password" name="password" id="password" placeholder="Digite sua senha">
+            </div>
+            <div class="full-box">
+                <input type="submit" id="btn-submit" value=Entrar @onclick="LogInto">
+            </div>
+
+        </form>
+
+
+    </div>
+
+</div>
+
+
+
+@code {
+
+    public void LogInto()
+    {
+
+    }
+
+}

@@ -1,0 +1,53 @@
+﻿@page "/register"
+@using Jogar.Damas.Application.Users.Commands
+@inject CreateUserCommand createUser;
+
+<PageTitle>Register</PageTitle>
+
+<div id="main-container">
+    <h1>Cadastre-se para jogar</h1>
+    <form id="register-form">
+        <div class="full-box">
+            <label for="email">E-mail</label>
+            <input @bind-value="createUser.Email" class="form-control" type="email" name="email" id="email" placeholder="Digite seu e-mail">
+        </div>
+        <div class="half-box spacing">
+            <label for="name">Nome</label>
+            <input @bind-value="createUser.UserName" class="form-control" type="text" name="name" id="name" placeholder="Digite seu nome">
+        </div>
+        <div class="half-box spacing">
+            <label for="password">Senha</label>
+            <input @bind-value="createUser.Password" class="form-control" type="password" name="password" id="password" placeholder="Digite sua senha">
+        </div>
+        <div class="half-box spacing">
+            <label for="passconfirmation">Confirmação de Senha</label>
+            <input @bind-value="createUser.Passconfirmation" class="form-control" type="password" name="passconfirmation" id="passconfirmation" placeholder="Confirme sua senha">
+        </div>
+        <div class="half-box spacing">
+            <label for="phone">Telefone</label>
+            <input @bind-value="createUser.Phone" class="form-control" type="phone" name="phone" id="phone" placeholder="Digite seu telefone">
+        </div>
+        <div class="full-box">
+            <input type="checkbox" name="agreement" id="agreement" >
+            <label for="agreement" id="agreement-label">Eu li e aceito os <a href="#">termos de uso</a> </label>
+        </div>
+        <div class="full-box">
+            <input type="submit" id="btn-submit" value=Registrar @onclick="Save">
+            </div>
+
+    </form>
+
+
+</div>
+
+
+
+
+@code {
+
+    public void Save()
+    {
+        createUser.Handler();
+    }
+
+}

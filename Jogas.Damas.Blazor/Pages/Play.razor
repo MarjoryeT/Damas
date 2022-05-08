@@ -18,11 +18,11 @@
                         {
                             @if (house.Pawn.CheckerCollor == Jogar.Damas.Domain.Enums.CheckerCollor.BLACK)
                             {
-                                <img @onclick="()=> SelectPawn(house)" src="/img/checker-white.png" class="pawn">
+                                <img @onclick="()=> SelectPawn(house)" src="/img/checker-black.png" class="pawn">
                             }
                             else
                             {
-                                <img @onclick="()=> SelectPawn(house)" src="/img/checker-black.png" class="pawn">
+                                <img @onclick="()=> SelectPawn(house)" src="/img/checker-white.png" class="pawn">
                             }
                         }
                     </div>

@@ -1,17 +1,15 @@
 ﻿using Jogar.Damas.Domain.Enums;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Jogar.Damas.Domain.Entity
 {
     public class Pawn
     {
-        public Pawn(CheckerCollor checkerCollor, int row, int col)
+        public Pawn(CheckerCollor checkerCollor, BoardHouse house)
         {
             CheckerCollor = checkerCollor;
-            Row = row;
-            Col = col;
+            Row = house.Row;
+            Col = house.Col;
+            House = house;
         }
 
         public string PawnId => CheckerCollor.ToString() + Row + Col;
@@ -20,5 +18,18 @@ namespace Jogar.Damas.Domain.Entity
         public CheckerCollor CheckerCollor { get; protected set; }
         public int Row { get; protected set; }
         public int Col { get; protected set; }
+
+        public BoardHouse House { get; protected set; }
+
+        public void Move(BoardHouse house)
+        {
+            House = house;
+        }
+
+        public void Capture()
+        {
+            WasCaptured = true;
+            House.Clear();
+        }
     }
 }

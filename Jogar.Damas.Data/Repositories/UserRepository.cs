@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 
 namespace Jogar.Damas.Data.Repositories
 {
-    internal class UserRepository : IUserRepository
+    public class UserRepository : IUserRepository
     {
-        public Task<CheckersGame> FindUserByName(string name)
+        public Task<User> FindUserByName(string name)
         {
             throw new NotImplementedException();
         }
 
-        public Task SaveUserAsync(CheckersGame user)
+        public Task SaveUserAsync(User user)
         {
             throw new NotImplementedException();
         }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Jogar.Damas.Domain.Enums;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Jogar.Damas.Domain.Entity
@@ -7,11 +8,14 @@ namespace Jogar.Damas.Domain.Entity
     {
         public List<BoardHouse> Houses { get; protected set; }
         public List<Pawn> Pawns { get; protected set; }
-
         public Pawn SelectedPanw { get; protected set; }
+        public CheckerCollor CurrentPlayer { get; protected set; }
+        public List<Pawn> CapturedPawns => Pawns.Where(pawn => pawn.WasCaptured).ToList();
 
         public Board(int row, int col)
         {
+            CurrentPlayer = CheckerCollor.WHITE;
+
             Houses = new List<BoardHouse>();
             Pawns = new List<Pawn>();
 
@@ -23,20 +27,17 @@ namespace Jogar.Damas.Domain.Entity
                 {
                     if (IsPair(r) == IsPair(c))
                     {
-
                         if (r <= rowPerPaws)
                         {
-                            Pawn pawn = new Pawn(Enums.CheckerCollor.WHITE, r, c);
-
-                            Houses.Add(new BoardHouse(r, c, pawn));
-                            Pawns.Add(pawn);
+                            var house = new BoardHouse(r, c, CheckerCollor.WHITE);
+                            Houses.Add(house);
+                            Pawns.Add(house.Pawn);
                         }
                         else if (r > rowPerPaws + 2)
                         {
-                            Pawn pawn = new Pawn(Enums.CheckerCollor.BLACK, r, c);
-
-                            Houses.Add(new BoardHouse(r, c, pawn));
-                            Pawns.Add(pawn);
+                            var house = new BoardHouse(r, c, CheckerCollor.BLACK);
+                            Houses.Add(house);
+                            Pawns.Add(house.Pawn);
                         }
                         else
                         {
@@ -48,32 +49,47 @@ namespace Jogar.Damas.Domain.Entity
 
         }
 
-        public void Move(BoardHouse newHouse)
+        public void Move(BoardHouse house)
         {
-            if (newHouse.Available)
+            if (house.Available)
             {
-                BoardHouse actualHouse = GetHouse(SelectedPanw);
-                actualHouse.Clear();
-                newHouse.SetPanw(SelectedPanw);
+                SelectedPanw.House.Clear();
+
+                house.SetPanw(SelectedPanw);
+
+                if (house.ThreatenedPawn is null)
+                {
+                    if (CurrentPlayer == CheckerCollor.BLACK)
+                    {
+                        CurrentPlayer = CheckerCollor.WHITE;
+                    }
+                    else
+                    {
+                        CurrentPlayer = CheckerCollor.BLACK;
+                    }
+                }
                 UnavailableHouses();
             }
         }
 
         public void SelectPanw(Pawn pawn)
         {
-            var adjacentHouses = GetAdjacentHouses(pawn);
+            if (pawn.CheckerCollor == CurrentPlayer)
+            {
+                UnavailableHouses();
 
-            var adversaryHouses = adjacentHouses.Where(h => h.Pawn?.CheckerCollor != pawn.CheckerCollor && !h.Empty).ToList();
+                var adjacentHouses = GetAdjacentHouses(pawn);
 
-            var houses = adjacentHouses.Where(h => h.Empty).ToList();
+                var adversaryHouses = adjacentHouses.Where(h => h.Pawn?.CheckerCollor != pawn.CheckerCollor && !h.Empty).ToList();
 
-            houses.AddRange(GetAdjacentAdversaryHouses(adversaryHouses, pawn));
+                var houses = adjacentHouses.Where(h => h.Empty).ToList();
+                houses.AddRange(GetAdjacentAdversaryHouses(adversaryHouses, pawn));
 
-            UnavailableHouses();
 
-            houses.ForEach(h => h.MakeAvailable(true));
+                houses.ForEach(h => h.MakeAvailable(true));
 
-            SelectedPanw = pawn;
+                SelectedPanw = pawn;
+            }
         }
 
         public void UnavailableHouses()
@@ -83,8 +99,15 @@ namespace Jogar.Damas.Domain.Entity
 
         private List<BoardHouse> GetAdjacentHouses(Pawn pawn)
         {
-            BoardHouse house = GetHouse(pawn);
-            return Houses.Where(h => (h.Col == house.Col - 1 || h.Col == house.Col + 1) && h.Row == house.Row + 1).ToList();
+            var houses = Houses.Where(h =>
+            (h.Col == pawn.House.Col - 1 || h.Col == pawn.House.Col + 1) &&
+            (h.Row == pawn.House.Row + 1 || h.Row == pawn.House.Row - 1) &&
+            h.Pawn?.CheckerCollor != pawn.CheckerCollor);
+
+            if (pawn.CheckerCollor == CheckerCollor.WHITE)
+                return houses.Where(h => h.Row > pawn.House.Row || (!h.Empty && h.Pawn.CheckerCollor != pawn.CheckerCollor)).ToList();
+            else
+                return houses.Where(h => h.Row < pawn.House.Row || (!h.Empty && h.Pawn.CheckerCollor != pawn.CheckerCollor)).ToList();
         }
 
         private List<BoardHouse> GetAdjacentAdversaryHouses(List<BoardHouse> houses, Pawn pawn)
@@ -92,15 +115,22 @@ namespace Jogar.Damas.Domain.Entity
             List<BoardHouse> boardHouses = new List<BoardHouse>();
             foreach (var house in houses)
             {
-                var boardHouse = Houses.FirstOrDefault(h => (h.Col == house.Col + (house.Col - pawn.Col)) && h.Row == house.Row + 1);
-                boardHouses.Add(boardHouse);
+                BoardHouse boardHouse;
+                if (CurrentPlayer == CheckerCollor.WHITE)
+                {
+                    boardHouse = Houses.FirstOrDefault(h => (h.Col == house.Col + (house.Col - pawn.House.Col)) && h.Row == house.Row + 1);
+                }
+                else
+                {
+                    boardHouse = Houses.FirstOrDefault(h => (h.Col == house.Col + (house.Col - pawn.House.Col)) && h.Row == house.Row - 1);
+                }
+                if (boardHouse != null)
+                {
+                    boardHouse.ThreatenPawn(house.Pawn);
+                    boardHouses.Add(boardHouse);
+                }
             }
             return boardHouses;
-        }
-
-        private BoardHouse GetHouse(Pawn pawn)
-        {
-            return Houses.FirstOrDefault(house => house.Pawn == pawn);
         }
 
         public BoardHouse GetHouse(int row, int col)

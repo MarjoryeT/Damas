@@ -17,9 +17,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5-Tests", "5-Tests", "{5F8A
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jogar.Damas.Test", "Jogar.Damas.Test\Jogar.Damas.Test.csproj", "{8BB14E66-8331-41CE-82E9-F3721E0B6E72}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jogar.Damas.Data", "Jogar.Damas.Data\Jogar.Damas.Data.csproj", "{29D94193-47A0-48CF-9160-20A910D97F22}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jogar.Damas.Data", "Jogar.Damas.Data\Jogar.Damas.Data.csproj", "{29D94193-47A0-48CF-9160-20A910D97F22}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jogas.Damas.Blazor", "Jogas.Damas.Blazor\Jogas.Damas.Blazor.csproj", "{C62F75A8-0DB0-46F9-AA94-CA6746B18B91}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jogas.Damas.Blazor", "Jogas.Damas.Blazor\Jogas.Damas.Blazor.csproj", "{C62F75A8-0DB0-46F9-AA94-CA6746B18B91}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jogar.Damas.Application", "Jogar.Damas.Application\Jogar.Damas.Application.csproj", "{F25F18F4-BE0C-4115-916F-901D15637E9F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,6 +45,10 @@ Global
 		{C62F75A8-0DB0-46F9-AA94-CA6746B18B91}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C62F75A8-0DB0-46F9-AA94-CA6746B18B91}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C62F75A8-0DB0-46F9-AA94-CA6746B18B91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F25F18F4-BE0C-4115-916F-901D15637E9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F25F18F4-BE0C-4115-916F-901D15637E9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F25F18F4-BE0C-4115-916F-901D15637E9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F25F18F4-BE0C-4115-916F-901D15637E9F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -52,6 +58,7 @@ Global
 		{8BB14E66-8331-41CE-82E9-F3721E0B6E72} = {5F8AFAD0-12A6-4A3E-AC94-FFA764F5571F}
 		{29D94193-47A0-48CF-9160-20A910D97F22} = {F095AFA2-F283-4BB4-A402-53176EF340C3}
 		{C62F75A8-0DB0-46F9-AA94-CA6746B18B91} = {D62C0814-BA42-48D6-BFE0-F1C455134F4F}
+		{F25F18F4-BE0C-4115-916F-901D15637E9F} = {ECA23606-8F40-4517-9095-6F427248ACE3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7331F60F-E3FF-4FF8-9A3A-BCDC52C2455F}

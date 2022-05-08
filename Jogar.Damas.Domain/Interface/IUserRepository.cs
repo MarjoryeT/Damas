@@ -9,9 +9,9 @@ namespace Jogar.Damas.Domain.Interface
 {
     public interface IUserRepository
     {
-        Task<CheckersGame> FindUserByName(string name);
+        Task<User> FindUserByName(string name);
 
-        Task SaveUserAsync(CheckersGame user);
+        Task SaveUserAsync(User user);
 
     }
 }
