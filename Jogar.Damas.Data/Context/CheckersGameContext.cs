@@ -17,7 +17,7 @@ namespace Jogar.Damas.Data.Context
 
         }
 
-        public DbSet<CheckersGame> User { get; set; }
+        public DbSet<User> User { get; set; }
 
         public DbSet<CheckersGame> CheckersGame { get; set; }
 
