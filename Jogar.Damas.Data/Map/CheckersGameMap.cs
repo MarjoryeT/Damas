@@ -13,43 +13,22 @@ namespace Jogar.Damas.Data.Map
     {
         public void Configure(EntityTypeBuilder<CheckersGame> builder)
         {
-            builder.ToTable("TB_CHECKERSGAME");
+            builder.ToTable("TB_CHECKERS_GAME");
 
             builder.HasKey(checkersGame => checkersGame.CheckersGameId);
 
-            builder.Property(checkersGame => checkersGame.CheckersGameId).HasField("CHECKERS_GAME_ID");
+            builder.Property(checkersGame => checkersGame.CheckersGameId).HasColumnName("CHECKERS_GAME_ID");
 
-            builder.Property(checkersGame => checkersGame.PlayerBlackId).HasField("PLAYER_BLACK_ID");
+            builder.Property(checkersGame => checkersGame.PlayerBlackId).HasColumnName("PLAYER_BLACK_ID");
 
-            builder.Property(checkersGame => checkersGame.PlayerWhiteId).HasField("PLAYER_WHITE_ID");
+            builder.Property(checkersGame => checkersGame.PlayerWhiteId).HasColumnName("PLAYER_WHITE_ID");
 
             builder.Property(checkersGame => checkersGame.StartDate)
                 .HasColumnName("START_DATE")
-                .HasMaxLength(50)
-                .HasColumnType("VARCHAR")
                 .IsRequired();
 
-            builder.Property(checkersGame => checkersGame.PlayerBlack)
-                .HasColumnName("PLAYER_BLACK")
-                .HasMaxLength(50)
-                .HasColumnType("VARCHAR")
-                .IsRequired();
-
-            builder.Property(checkersGame => checkersGame.PlayerWhite)
-                 .HasColumnName("PLAYER_WHITE")
-                 .HasMaxLength(50)
-                 .HasColumnType("VARCHAR")
-                 .IsRequired();
-
-            builder.Property(checkersGame => checkersGame.Board)
-                .HasColumnName("BOARD")
-                .HasMaxLength(50)
-                .HasColumnType("VARCHAR")
-                .IsRequired();
-
-           
+            builder.Ignore(checkersGame => checkersGame.Board);
 
         }
-
     }
 }

@@ -17,7 +17,7 @@ namespace Jogar.Damas.Data.Map
 
             builder.HasKey(user => user.UserId);
 
-            builder.Property(user => user.UserId).HasField("USER_ID");
+            builder.Property(user => user.UserId).HasColumnName("USER_ID");
 
             builder.Property(user => user.UserName)
                 .HasColumnName("USER_NAME")
@@ -45,11 +45,7 @@ namespace Jogar.Damas.Data.Map
 
             builder.Property(user => user.StartDate)
                 .HasColumnName("START_DATE")
-                .HasMaxLength(50)
-                .HasColumnType("VARCHAR")
                 .IsRequired();
-
-
         }
     }
 }
