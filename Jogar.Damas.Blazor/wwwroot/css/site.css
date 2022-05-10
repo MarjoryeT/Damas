@@ -1,4 +1,4 @@
-﻿@import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
+@import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
 
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -132,18 +132,16 @@ a, .btn-link {
 
 /* Registro */
 input, label {
-
-    display:block;
+    display: block;
     width: 100%;
 }
 
-input:focus, label:focus {
-    
-    outline: none;
-}
+    input:focus, label:focus {
+        outline: none;
+    }
 
 a {
-    color:crimson
+    color: crimson
 }
 
 .main-register {
@@ -162,26 +160,26 @@ a {
     padding: 25px;
 }
 
-#main-container h1{
-    text-align: center;
-    margin-bottom: 25px;
-    font-size:1.6rem;
-}
+    #main-container h1 {
+        text-align: center;
+        margin-bottom: 25px;
+        font-size: 1.6rem;
+    }
 
-form{
+form {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
 }
 
-.full-box{
+.full-box {
     flex: 1 1 100%;
     position: relative;
 }
 
-.half-box{
+.half-box {
     flex: 1 1 45%;
-    position:relative;
+    position: relative;
 }
 
 .spacing {
@@ -190,7 +188,7 @@ form{
 
 label {
     font-weight: bold;
-    font-size:.8rem;
+    font-size: .8rem;
 }
 
 input {
@@ -200,18 +198,19 @@ input {
     margin-bottom: 40px;
 }
 
-input:focus {
-    border-color: crimson;
-}
+    input:focus {
+        border-color: crimson;
+    }
 
-input[type="submit"] {
-    background-color: crimson;
-    color: white;
-    border: none;
-    border-radius: 20px;
-    height: 40px;
-    cursor: pointer;
-}
+    input[type="submit"] {
+        background-color: crimson;
+        color: white;
+        border: none;
+        border-radius: 20px;
+        height: 40px;
+        cursor: pointer;
+    }
+
 #agreement {
     margin-right: 5px;
 }
@@ -221,7 +220,7 @@ input[type="submit"] {
     width: auto;
 }
 
-.error-validation{
+.error-validation {
     color: red;
     position: absolute;
     top: 57px;
@@ -231,4 +230,3 @@ input[type="submit"] {
 template {
     display: none;
 }
-

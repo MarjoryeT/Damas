@@ -1,23 +1,27 @@
-﻿using Jogar.Damas.Domain.Entity;
+﻿using Jogar.Damas.Data.Context;
+using Jogar.Damas.Domain.Entity;
 using Jogar.Damas.Domain.Interface;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Jogar.Damas.Data.Repositories
 {
     public class UserRepository : IUserRepository
     {
+        private readonly CheckersGameContext _context;
+
+        public UserRepository(CheckersGameContext context)
+        {
+            _context = context;
+        }
+
         public Task<User> FindUserByName(string name)
         {
             throw new NotImplementedException();
         }
 
-        public Task SaveUserAsync(User user)
+        public async Task SaveUserAsync(User user)
         {
-            throw new NotImplementedException();
+            await _context.AddAsync(user);
+            await _context.SaveChangesAsync();  
         }
     }
 }

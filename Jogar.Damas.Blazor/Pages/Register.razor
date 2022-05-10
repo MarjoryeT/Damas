@@ -6,7 +6,6 @@
 
 <div id="main-container">
     <h1>Cadastre-se para jogar</h1>
-    <form id="register-form">
         <div class="full-box">
             <label for="email">E-mail</label>
             <input @bind-value="createUser.Email" class="form-control" type="email" name="email" id="email" placeholder="Digite seu e-mail">
@@ -23,21 +22,13 @@
             <label for="passconfirmation">Confirmação de Senha</label>
             <input @bind-value="createUser.Passconfirmation" class="form-control" type="password" name="passconfirmation" id="passconfirmation" placeholder="Confirme sua senha">
         </div>
-        <div class="half-box spacing">
-            <label for="phone">Telefone</label>
-            <input @bind-value="createUser.Phone" class="form-control" type="phone" name="phone" id="phone" placeholder="Digite seu telefone">
-        </div>
         <div class="full-box">
-            <input type="checkbox" name="agreement" id="agreement" >
+            <input type="checkbox" name="agreement" id="agreement">
             <label for="agreement" id="agreement-label">Eu li e aceito os <a href="#">termos de uso</a> </label>
         </div>
         <div class="full-box">
-            <input type="submit" id="btn-submit" value=Registrar @onclick="Save">
-            </div>
-
-    </form>
-
-
+            <button class="btn btn-info" @onclick="Save">Registrar</button>
+        </div>
 </div>
 
 
@@ -45,9 +36,9 @@
 
 @code {
 
-    public void Save()
+    public async void Save()
     {
-        createUser.Handler();
+        await createUser.Handler();
     }
 
 }

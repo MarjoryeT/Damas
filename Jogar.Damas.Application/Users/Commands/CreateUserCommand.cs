@@ -20,16 +20,15 @@ namespace Jogar.Damas.Application.Users.Commands
         public string UserName { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
-        public string Phone { get; set; }
         public string Passconfirmation { get; set; }
 
-        public void Handler()
+        public async Task Handler()
         {
             User user = new User();
 
-            user.CreateUser(UserName, Email, Password, Phone);
+            user.CreateUser(UserName, Email, Password);
 
-            _repository.SaveUserAsync(user);
+            await _repository.SaveUserAsync(user);
 
         }
     }

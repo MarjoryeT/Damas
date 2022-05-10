@@ -41,12 +41,6 @@ namespace Jogar.Damas.Data.Migrations
                         .HasColumnType("VARCHAR")
                         .HasColumnName("PASSWORD");
 
-                    b.Property<string>("Phone")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("VARCHAR")
-                        .HasColumnName("PHONE");
-
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("START_DATE");

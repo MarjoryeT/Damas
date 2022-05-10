@@ -14,9 +14,8 @@ namespace Jogar.Damas.Domain.Entity
         public string Email { get; protected set; }
         public string Password { get; protected set; }
         public DateTime StartDate { get; protected set; }
-        public string Phone { get; protected set; }
 
-        public void CreateUser(string userName, string email, string password, string phone)
+        public void CreateUser(string userName, string email, string password)
         {
             if (userName.Length < 3)
             {
@@ -28,10 +27,10 @@ namespace Jogar.Damas.Domain.Entity
                 AddRule(nameof(Email), "Email inválido");
             }
 
-            if (!new Regex(@"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{4,}$").IsMatch(password))
-            {
-                AddRule(nameof(password), "A senha precisa ter no mínimo 4 caracteres entre letras, símbolos e números");
-            }
+            //if (!new Regex(@"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{4,}$").IsMatch(password))
+            //{
+            //    AddRule(nameof(password), "A senha precisa ter no mínimo 4 caracteres entre letras, símbolos e números");
+            //}
 
             if (rules.Count > 0)
             {
@@ -41,9 +40,7 @@ namespace Jogar.Damas.Domain.Entity
             UserName = userName;
             Email = email;
             Password = password;
-            StartDate = DateTime.Now;
-            Phone = phone;
-
+            StartDate = DateTime.Today;
         }
 
     }

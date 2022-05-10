@@ -37,12 +37,6 @@ namespace Jogar.Damas.Data.Map
                  .HasColumnType("VARCHAR")
                  .IsRequired();
 
-            builder.Property(user => user.Phone)
-                .HasColumnName("PHONE")
-                .HasMaxLength(50)
-                .HasColumnType("VARCHAR")
-                .IsRequired();
-
             builder.Property(user => user.StartDate)
                 .HasColumnName("START_DATE")
                 .IsRequired();

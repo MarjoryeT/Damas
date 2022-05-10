@@ -17,8 +17,7 @@ namespace Jogar.Damas.Data.Migrations
                     USER_NAME = table.Column<string>(type: "VARCHAR", maxLength: 50, nullable: false),
                     EMAIL = table.Column<string>(type: "VARCHAR", maxLength: 50, nullable: false),
                     PASSWORD = table.Column<string>(type: "VARCHAR", maxLength: 50, nullable: false),
-                    START_DATE = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    PHONE = table.Column<string>(type: "VARCHAR", maxLength: 50, nullable: false)
+                    START_DATE = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
