@@ -1,4 +1,4 @@
-﻿@page "/register"
+﻿@*@page "/register"
 @using Jogar.Damas.Application.Users.Commands
 @inject CreateUserCommand createUser;
 
@@ -41,4 +41,4 @@
         await createUser.Handler();
     }
 
-}
+}*@
